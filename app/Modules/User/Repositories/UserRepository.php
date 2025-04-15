@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Modules\User\Repositories;
 
-use App\Models\User;
-use App\Repositories\BaseRepository;
+use App\Modules\User\Models\User;
+use App\Base\BaseRepository;
 use Illuminate\Support\Facades\Hash;
 
 

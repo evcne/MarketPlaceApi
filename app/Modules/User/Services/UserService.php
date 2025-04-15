@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Modules\User\Services;
 
-use App\Repositories\UserRepository;
+use App\Modules\User\Repositories\UserRepository;
 use App\Helpers\Helper;
-use App\Responses\BaseResponse;
+use App\Base\BaseResponse;
 use App\Base\BaseService;
 
 

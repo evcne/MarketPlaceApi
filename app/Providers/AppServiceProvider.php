@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\UserRepository;
-use App\Services\UserService;
-use App\Responses\BaseResponse;
+use App\Modules\User\Repositories\UserRepository;
+use App\Modules\User\Services\UserService;
+use App\Base\BaseResponse;
 
 
 class AppServiceProvider extends ServiceProvider

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\UserService;
+use App\Modules\User\Services\UserService;
 
 class DebugController extends Controller
 {
