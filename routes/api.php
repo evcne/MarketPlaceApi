@@ -23,19 +23,6 @@ Route::post('/register', [AuthController::class, 'register']);
 //Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
-
-
-/*Route::middleware('auth:api', 'refresh.token')->group(function () {
-    Route::get('/profile', [AuthController::class, 'profile']);
-    Route::post('/logout', [AuthController::class, 'logout']);
-
-    Route::get('/users', [UserController::class, 'index']);
-    Route::post('/users', [UserController::class, 'store']);
-});*/
-
-Route::post('/users', [UserController::class, 'store']);
-
-
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);

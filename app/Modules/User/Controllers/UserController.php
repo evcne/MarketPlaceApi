@@ -11,15 +11,12 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    protected $userService;
-    private $baseResponse;
 
-
-    public function __construct(UserService $userService, BaseResponse $baseResponse)
-    {
-        $this->userService = $userService;
-        $this->baseResponse = $baseResponse;
-    }
+    public function __construct(
+        protected UserService $userService,
+        protected BaseResponse $baseResponse)
+    {}     
+    
 
     public function index()
     {

@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use App\Modules\User\Repositories\UserRepository;
 use App\Modules\User\Services\UserService;
 use App\Base\BaseResponse;
+use Dedoc\Scramble\Scramble;
+use Illuminate\Support\Facades\Route;
+
 
 
 class AppServiceProvider extends ServiceProvider
@@ -33,7 +36,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
-
+        Scramble::routes(function () {
+            return collect(Route::getRoutes())
+                ->filter(function ($route) {
+                    return str_starts_with($route->uri, 'api/');
+                });
+        });
+    
     }
 }
