@@ -1,6 +1,11 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Modules\User\Controllers\UserController;
+use App\Http\Middleware\RefreshJwtMiddleware;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require base_path('app/Modules/Auth/Routes/auth.php');
-require base_path('app/Modules/User/Routes/user.php');
+Route::middleware('auth:api')->group(function () {
+    Route::get('/users', [UserController::class, 'index']);
+    Route::post('/users', [UserController::class, 'store']);
+});
 
-Route::middleware('auth:api')->get('/debug-token', [\App\Http\Controllers\DebugController::class, 'checkToken']);

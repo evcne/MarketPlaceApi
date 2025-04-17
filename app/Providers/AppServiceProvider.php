@@ -8,7 +8,8 @@ use App\Modules\User\Services\UserService;
 use App\Base\BaseResponse;
 use Dedoc\Scramble\Scramble;
 use Illuminate\Support\Facades\Route;
-
+use App\Modules\Auth\Services\AuthService;
+use App\Modules\Auth\Repositories\AuthRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
 
             );
         });
+
+        $this->app->bind(AuthService::class);
+        $this->app->bind(AuthRepository::class);
 
     }
 

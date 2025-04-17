@@ -21,6 +21,8 @@ class Helper
     const AUTH_SUCCESS_TEXT = "Oturum açma işlemi başarılı.";
     const AUTH_FAILED_TEXT = "Oturum açma işlemi başarısız.";
     const AUTH_EXPIRED_TOKEN = "Oturumunuzun süresi dolmuştur.";
+    const AUTH_LOGOUT_SUCCESS_TEXT = "Oturum kapatma işlemi başarılı.";
+    const AUTH_LOGOUT_FAILED_TEXT = "Oturum kapatma işlemi başarısız.";
 
     const USER_INACTIVE_TEXT = "Lütfen hesabınızın aktivasyon işlemlerini tamamlayınız.";
     const USER_ACTIVATE_SUCCESS_TEXT = "Hesabınız başarıyla aktifleştirilmiştir.";

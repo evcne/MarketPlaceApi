@@ -216,6 +216,33 @@ class BaseResponse
         return $this->getResponse($this->helper::A001,false,$this->helper::AUTH_FAILED_TEXT, $data, 400);
     }
 
+    /**
+     * @param array|null $data
+     * @return JsonResponse
+     */
+    public function authLogoutSuccessResponse(?array $data): JsonResponse
+    {
+        return $this->getResponse($this->helper::A000,true,$this->helper::AUTH_LOGOUT_SUCCESS_TEXT, $data, 200);
+    }
+
+    /**
+     * @param array|null $data
+     * @return JsonResponse
+     */
+    public function authLogoutFailedResponse(?array $data): JsonResponse
+    {
+        return $this->getResponse($this->helper::A000,true,$this->helper::AUTH_LOGOUT_SUCCESS_TEXT, $data, 500);
+    }
+
+    /**
+     * @param array|null $data
+     * @return JsonResponse
+     */
+    public function authTokenExpiredResponse(?array $data): JsonResponse
+    {
+        return $this->getResponse($this->helper::A000,true,$this->helper::AUTH_EXPIRED_TOKEN, $data, 401);
+    }
+
     public function getLangMessage(string $message)
     {
         $array = [
