@@ -30,4 +30,22 @@ class UserController extends Controller
         $user = $this->userService->createUser($data);
         return $user;
     }
+
+    public function updateUserRole(Request $request)
+    {
+        /*$request->validate([
+            'company_id' => 'required|exists:companies,id'
+        ]);*/
+
+        $data = $request->only('company_id', 'update_user_id', 'is_vendor', 'role');
+        $userUpdate = $this->userService->updateUserRole($data);
+        return $userUpdate;
+
+    }
+
+    public function changeStatus($id)
+    {
+        $userChangeStatus = $this->userService->changeStatus($id);
+        return $userChangeStatus;
+    }
 }

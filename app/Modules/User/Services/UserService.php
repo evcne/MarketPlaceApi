@@ -31,7 +31,13 @@ class UserService extends BaseService
             return $this->baseResponse->authFailedResponse(null);
         }
 
-        $userList = $this->userRepository->getAllUsers();
+        $isAdminRole = false;
+        if($user->role == $this->helper::USER_ROLE_ADMIN || 
+        $user->role == $this->helper::USER_ROLE_SUPER_ADMIN) {
+            $isAdminRole = true;
+        }
+
+        $userList = $this->userRepository->getAllUsers($isAdminRole, $user->id);
 
         if(!$this->helper->checkIfExist($userList))
             return $this->baseResponse->readFailedResponse(null);
@@ -45,10 +51,21 @@ class UserService extends BaseService
         $newUser = $this->userRepository->createUser($data);
 
         if(!$this->helper->checkIfExist($newUser))
-            return $this->baseResponse->createFailedMessageResponse($newUser, '');
+            return $this->baseResponse->createFailedResponse(['message' => 'Kullanıcı oluşturulamadı.']);
 
 
         return $this->baseResponse->createSuccessResponse($newUser);
+    }
+
+    public function updateUserRole($data)
+    {
+        $newUser = $this->userRepository->updateUserRole($data);
+
+        if(!$this->helper->checkIfExist($newUser))
+            return $this->baseResponse->updateFailedResponse(['message' => 'Kullanıcı güncellenemedi.']);
+
+
+        return $this->baseResponse->updateSuccessResponse($newUser);
     }
 
     public function debugTokenInfo()
@@ -63,6 +80,23 @@ class UserService extends BaseService
             'user' => $user,
             'refreshed_token' => $this->refreshedToken ?? 'Token hâlâ geçerli, refresh edilmedi'
         ], 'Token durumu');
+    }
+
+    public function changeStatus($id)
+    {
+        $user = auth()->user();   
+
+        if($user->role < $this->helper::USER_ROLE_ADMIN) {
+            return $this->baseResponse->authFailedResponse(null);
+        }
+
+        $changeStatus = $this->userRepository->changeStatus($id);
+
+        if (!$changeStatus) 
+            return $this->baseResponse->updateFailedResponse(null);
+
+        return $this->baseResponse->updateSuccessResponse(null);
+        
     }
 
 }

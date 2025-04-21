@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->string('phone_number');
             $table->string('email');
-            $table->string('tax_no')->nullable();
-            $table->string('tckn_no')->nullable();
-            $table->boolean('status')->default(true); // Burası daha sonra false çekilecek, admin kontrol edecek
-            //city_id ve kind_id gibi özellikleri konuş eklenecek.
+            $table->string('tax_no')->nullable();    // Tüzel kişilikler için
+            $table->string('tckn_no')->nullable();   // Gerçek kişiler için
+            $table->unsignedTinyInteger('tax_status')->default(0); // 0: individual, 1: corporate
+            $table->boolean('is_approved')->default(false); // admin onayı
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company');
+        Schema::dropIfExists('companies');
     }
 };

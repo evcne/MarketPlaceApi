@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AuthService::class);
         $this->app->bind(AuthRepository::class);
 
+        $this->app->bind(CompanyService::class);
+        $this->app->bind(CompanyRepository::class);
+
     }
 
     /**

@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 require base_path('app/Modules/Auth/Routes/auth.php');
 require base_path('app/Modules/User/Routes/user.php');
+require base_path('app/Modules/Company/Routes/company.php');
+
 
 Route::middleware('auth:api')->get('/debug-token', [\App\Http\Controllers\DebugController::class, 'checkToken']);

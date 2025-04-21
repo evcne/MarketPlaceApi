@@ -42,6 +42,12 @@ class Helper
     public const NOT_EXIST = "0";
     public const SQL_EXCEPTION = "-1";
 
+    // 0: customer (son alıcı), 1: vendor (satıcı şirket sahibi), 2: admin, 3: super_admin
+    public const USER_ROLE_CUSTOMER = 0;
+    public const USER_ROLE_VENDOR = 1;
+    public const USER_ROLE_ADMIN = 2;
+    public const USER_ROLE_SUPER_ADMIN = 3;
+
 
     public const C000 = "C000"; // Kayıt Ekleme İşlemi Başarılı
     public const C001 = "C001"; // Kayıt Ekleme İşlemi Başarısız (Mesajı göster)
