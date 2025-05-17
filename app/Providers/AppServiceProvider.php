@@ -36,6 +36,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CompanyService::class);
         $this->app->bind(CompanyRepository::class);
 
+        $this->app->bind(CategoryService::class);
+        $this->app->bind(CategoryRepository::class);
+
     }
 
     /**
